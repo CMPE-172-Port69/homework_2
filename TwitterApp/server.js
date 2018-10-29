@@ -1,9 +1,15 @@
 const express = require('express');
 const Twitter = require('twit');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const app = express();
 const client = new Twitter({
-
+  consumer_key: process.env.CONSUMER_KEY,
+  consumer_secret: process.env.CONSUMER_SECRET,
+  access_token: process.env.ACCESS_TOKEN,
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 
 app.use(require('cors')());
