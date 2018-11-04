@@ -24,7 +24,7 @@ app.get('/api/search', (req, res) => {
 let searchQuery = req.query.q;
 
   client
-  .get('search/tweets', { q: searchQuery, count: 1 })
+  .get('search/tweets', { q: searchQuery, count: 10 })
   .then(search => {
     res.send(search);
   })

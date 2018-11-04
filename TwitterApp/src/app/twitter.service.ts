@@ -29,7 +29,7 @@ export class TwitterService {
   }
 
   search(q?: string) {
-    return this.http.get<TwitterResponse>(`${environment.api}/search?q=${q}`);
+  return this.http.get<TwitterResponse>(`${environment.api}/search?q=${q}`);
   }
 
 

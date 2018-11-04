@@ -48,7 +48,7 @@ export class SearchComponent implements OnInit {
     //start writing code here for searching twitter api
     ngOnInit(){
             this.twitter.search(this.query).subscribe(x => this.tweetshit = x);
-            printTweet();
+            //printTweet();
             //this.twitter.search('banana').subscribe(x => this.bananaTweet = x.data);
             //this.getTweets();
         }

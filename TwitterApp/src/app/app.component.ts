@@ -19,12 +19,25 @@ export class AppComponent implements OnInit {
   //   text: 'bllblals';
   // };
   tweets: Tweet[] = [];
-
+  bananaTweet;
+  string: string;
+  text: string[] = [];
 
   constructor(private twitter: TwitterService) {}
 
    // manually subscribe to observable returned by user()
   ngOnInit() {
   this.twitter.user().subscribe(x => this.user = x.data);
+
+
+  this.twitter.search('banana').subscribe(x => { 
+    console.log(x.data.statuses.map(e => e.text)); 
+    this.bananaTweet = x.data;
+    this.text = this.bananaTweet.statuses.map(e => e.text);
+  });
+
+
+  
+
   }
 }
