@@ -1,51 +1,31 @@
-<label>Search for something:</label>
+<label>Search for top 100 Tweets: </label>
 <input type="text"
 class="form-control"
 [(ngModel)]="input"
 (input) = "checkString(input)">
+
 <p>
     {{ input }}
 </p>
+
 <button class="btn"
 [disabled]="stringIsEmpty"
 (click)="onSearch()">OK
 </button>
+
 <p [innerText] = statusMessage>
     <!-- above line is DATA BINDING, below line is STRING INTERPOLATION -->
     {{ statusMessage }}
 </p>
-<ul>
-    <li *ngFor="let entry of searchHistory">
-        {{ entry }}
-    </li>
-</ul>
 
 
-
-<!-- !!! trying to display tweets array -->
-<!-- ARRAY:
+<div class="tweet" *ngFor="let entryTweet of listOfTweets">
+{{entryTweet}}
 <br>
-<div *ngFor="let tweet of tweets">
-	id: {{tweet.id}}
-  text: {{tweet.text}}
-</div>
- -->
-
-<br><br>
-
-<!-- TESTING OBJECT: -->
-<!-- <br> -->
-<!-- {{tweetshit}} -->
-<!-- <br> -->
-<!-- {{bananatweet}} -->
-
-
-<div class = "search" *ngIf="tweetshit">
-  Tweet: @ {{tweetshit.statuses.id}}
-  <br>
-
-  <div class = "search">
-
-</div>
 </div>
 
+<!-- <ul>
+  <li *ngFor="let entryTweet of listOfTweets">
+      {{ entryTweet }}
+  </li>
+</ul> -->

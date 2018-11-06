@@ -25,19 +25,23 @@ export class AppComponent implements OnInit {
 
   constructor(private twitter: TwitterService) {}
 
-   // manually subscribe to observable returned by user()
+
   ngOnInit() {
+  // calls user API and puts the response in user object
   this.twitter.user().subscribe(x => this.user = x.data);
 
+  // // calls the search API and puts the response into text array string[]
+  // this.twitter.search('banana').subscribe(x => {
+  //   //prints out the json onto the console
+  //   console.log(x.data.statuses.map(e=> e.text));
 
-  this.twitter.search('banana').subscribe(x => { 
-    console.log(x.data.statuses.map(e => e.text)); 
-    this.bananaTweet = x.data;
-    this.text = this.bananaTweet.statuses.map(e => e.text);
-  });
+  //   //puts x.data into bananaTweet object
+  //   this.bananaTweet = x.data;
+  //   this.text = this.bananaTweet.statuses.map(e=> e.text);
+  // });
 
 
-  
+
 
   }
 }
