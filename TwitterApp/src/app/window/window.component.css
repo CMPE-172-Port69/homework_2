@@ -1,12 +1,8 @@
 .window {
-  width: 50%;
-  height: 50%;
-  border: 3px red dotted;
-  /* border-width: 5px;
-  border-color: red;
-  border-style: solid; */
+  width: 60%;
+  height: 80%;
+  border: 3px skyblue solid;
   padding: 5%;
-  margin: 10%;
-
+  margin: 20%, 10%;
 
 }

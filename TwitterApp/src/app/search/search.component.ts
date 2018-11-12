@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Tweet } from '../tweet';
 import { TwitterService } from '../twitter.service';
+import { Tweet } from '../tweet';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css'],
+  providers: [TwitterService]
 })
 export class SearchComponent implements OnInit {
 
@@ -14,67 +15,44 @@ export class SearchComponent implements OnInit {
     statusMessage: string = '';
     searchHistory = [];
 
-    //array of tweets
-    tweets: Tweet[] = [{id: 1234; text: 'blksjdf'}];
-    ids = [];
 
-    //search query
-    query = 'banana';
+    tweetEntry;
+    listOfTweets: string[] = [];
 
-    //test object insertion
-    tweetshit;
-    bananaTweet: Tweet;
-
-    constructor(private twitter: TwitterService){    }
+    constructor(private twitter: TwitterService) {    }
 
 
     checkString(input: String){
-        if(input!==""){
+        if( input !== '' ){
             this.stringIsEmpty = false;
         }
-            
+      }
 
-    }
 
     onSearch(){
         this.statusMessage = 'User searched: ' + this.input;
+
         this.searchHistory.push(this.input);
-        this.input='';
-        
-    }
 
+        this.twitter.search(this.input).subscribe(x => {
 
-    //!! WARNING: BROKEN CODE
-    //start writing code here for searching twitter api
-    ngOnInit(){
-            this.twitter.search(this.query).subscribe(x => this.tweetshit = x);
-            //printTweet();
-            //this.twitter.search('banana').subscribe(x => this.bananaTweet = x.data);
-            //this.getTweets();
-        }
+        console.log(x.data.statuses.map(e => e.text));
 
-  // !!! trying to add tweets from /search/tweets endpoint
-  //this.twitter.search(this.query).subscribe(tweets => {
-  //  tweets.data.forEach( tweet => {
-  //    this.tweets.unshift(tweet);
-  //  });
-  //});
+        // puts x.data into tweetEntry object
+        this.tweetEntry = x.data;
 
-    
+        // pushes each text of tweetEntry object onto listOfTweets string[]
+        this.listOfTweets = this.tweetEntry.statuses.map(e=> e.text);
 
-    getTweets() {
-    this.twitter.search(this.query).subscribe(tweets => {
-      tweets.data.forEach(tweet => {
-
-          this.tweets.push(tweet);
-        // if (this.ids.indexOf(tweet.id_str) < 0) {
-        //   this.ids.push(tweet.id_str);
-        //   this.tweets.unshift(tweet);
-        // }
-      })
+        // clear the input for next search
+        this.input = '';
     });
   }
-  
 
+
+
+    ngOnInit(){
+
+        }
 
 }
