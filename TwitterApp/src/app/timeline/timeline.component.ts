@@ -16,18 +16,22 @@ export class TimelineComponent implements OnInit {
   ngOnInit() {
     this.twitter.home().subscribe(tweetResponse => {
       //var timeLineTweets = tweetResponse.data;
-      this.listOfTweets = tweetResponse.data.map(tweetEntry => ({"id": tweetEntry.id, "text" :tweetEntry.full_text}));
+      this.listOfTweets = tweetResponse.data.map(tweetEntry => ({"id": tweetEntry.id_str, "text" :tweetEntry.full_text}));
   
       console.log(this.listOfTweets);
     });
   }
 
-  favoriteTweet() {
-    console.log("favoriteTweet method called");
+  favoriteTweet(input) {
+    console.log("favoriteTweet method called on id " + input);
+    this.twitter.action('favorite', input, true)
+    .subscribe(tweetResponse => console.log(tweetResponse));
   }
 
-  retweetTweet() {
-    console.log("retweetTweet method called");
+  retweetTweet(input) {
+    console.log("retweetTweet method called id " + input);
+    this.twitter.action('retweet', input, true)
+    .subscribe(tweetResponse => console.log(tweetResponse));
   }
 
 }
