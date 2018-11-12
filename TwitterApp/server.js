@@ -57,7 +57,7 @@ app.get('/api/home', (req, res) => {
   if (Date.now() - cacheAge > 60000) {
     console.log('60 seconds elapsed');
     cacheAge = Date.now();
-    const params = { tweet_mode: 'extended', count: 200 };
+    const params = { tweet_mode: 'extended', count: 5 };
     if (req.query.since) {
       params.since_id = req.query.since;
     }

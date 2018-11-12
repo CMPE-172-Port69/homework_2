@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { WindowComponent } from './window/window.component';
 import { SearchComponent } from './search/search.component';
 import { LocationComponent } from './location/location.component';
+import { TimelineComponent } from './timeline/timeline.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WindowComponent,
     SearchComponent,
-    LocationComponent
+    LocationComponent,
+    TimelineComponent
   ],
   imports: [
     BrowserModule,
