@@ -1,5 +1,5 @@
 <div class="tweet" *ngFor="let tweetEntry of listOfTweets">
-  {{tweetEntry}}
+  {{tweetEntry.text}}
   <br>
   <img src="../../assets/heart.png" (click)="favoriteTweet()">
   <img src="../../assets/retweet.png" (click)="retweetTweet()">

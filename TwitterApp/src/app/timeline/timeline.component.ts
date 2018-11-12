@@ -9,14 +9,14 @@ import { TwitterService } from '../twitter.service';
 })
 export class TimelineComponent implements OnInit {
 
-  listOfTweets: string[] = [];
+  listOfTweets: [];
 
   constructor(private twitter: TwitterService) { }
 
   ngOnInit() {
     this.twitter.home().subscribe(tweetResponse => {
       //var timeLineTweets = tweetResponse.data;
-      this.listOfTweets = tweetResponse.data.map(tweetEntry => tweetEntry.full_text);
+      this.listOfTweets = tweetResponse.data.map(tweetEntry => ({"id": tweetEntry.id, "text" :tweetEntry.full_text}));
   
       console.log(this.listOfTweets);
     });
