@@ -1,0 +1,14 @@
+<label>Post a new Tweet: </label>
+<input type="text"
+class="form-control"
+[(ngModel)]="input"
+(input) = "checkString(input)">
+
+<p>
+    {{ input }}
+</p>
+
+<button class="btn"
+[disabled]="stringIsEmpty"
+(click)="updateStatus()">OK
+</button>

@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TwitterService } from '../twitter.service';
-<<<<<<< HEAD
-//import { Tweet } from './tweet';
-=======
-import { Tweet } from '../tweet';
->>>>>>> d5d236991ea8cd23002860119caa53c56a91099e
 
 @Component({
   selector: 'app-search',

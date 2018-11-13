@@ -9,6 +9,7 @@ import { WindowComponent } from './window/window.component';
 import { SearchComponent } from './search/search.component';
 import { LocationComponent } from './location/location.component';
 import { TimelineComponent } from './timeline/timeline.component';
+import { UpdateStatusComponent } from './update-status/update-status.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TimelineComponent } from './timeline/timeline.component';
     WindowComponent,
     SearchComponent,
     LocationComponent,
-    TimelineComponent
+    TimelineComponent,
+    UpdateStatusComponent
   ],
   imports: [
     BrowserModule,
