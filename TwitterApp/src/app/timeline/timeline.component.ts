@@ -9,28 +9,38 @@ import { TwitterService } from '../twitter.service';
 })
 export class TimelineComponent implements OnInit {
 
-  listOfTweets: [];
+  listOfTweets: Object[] = [];
+
+  selectedItem: Object;
 
   constructor(private twitter: TwitterService) { }
 
   ngOnInit() {
-    this.twitter.home().subscribe(tweetResponse => {
-      //var timeLineTweets = tweetResponse.data;
-      this.listOfTweets = tweetResponse.data.map(tweetEntry => ({"id": tweetEntry.id_str, "text" :tweetEntry.full_text}));
+    this.twitter.home("360").subscribe(tweetResponse => {
+      var timeLineTweets = tweetResponse.data;
+      this.listOfTweets = timeLineTweets.map(tweetEntry => 
+        ({"id": tweetEntry.id_str, 
+        "text": tweetEntry.full_text, 
+        "favorited": false, 
+        "retweeted": false}));
   
       console.log(this.listOfTweets);
     });
   }
 
-  favoriteTweet(input) {
-    console.log("favoriteTweet method called on id " + input);
-    this.twitter.action('favorite', input, true)
+  favoriteTweet(input) {  
+    input.favorited = !input.favorited;
+
+    console.log("favoriteTweet method called on id " + input.id);
+    this.twitter.action('favorite', input.id, input.favorited)
     .subscribe(tweetResponse => console.log(tweetResponse));
   }
 
-  retweetTweet(input) {
-    console.log("retweetTweet method called id " + input);
-    this.twitter.action('retweet', input, true)
+  retweetTweet(tweetEntry) {
+    tweetEntry.retweeted = !tweetEntry.retweeted;
+
+    console.log(tweetEntry.retweeted + "| retweetTweet method called id " + tweetEntry.id);
+    this.twitter.action('retweet', tweetEntry.id, tweetEntry.retweeted)
     .subscribe(tweetResponse => console.log(tweetResponse));
   }
 
