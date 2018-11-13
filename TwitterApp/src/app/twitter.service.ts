@@ -32,6 +32,8 @@ export class TwitterService {
   return this.http.get<TwitterResponse>(`${environment.api}/search?q=${q}`);
   }
 
-
+  updateStatus(q?: string){
+    return this.http.post<TwitterResponse>(`${environment.api}/statuses/update?q=${q}`);
   }
 
+  }
