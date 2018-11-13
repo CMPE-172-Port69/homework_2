@@ -106,16 +106,16 @@ app.get('/api/home', (req, res) => {
 
 app.post('/api/favorite/:id', (req, res) => {
   const path = req.body.state ? 'create' : 'destroy';
-  client
-    .post(`favorites/${path}`, { id: req.params.id })
-    .then(tweet => res.send(tweet))
-    .catch(error => res.send(error));
+   client
+     .post(`favorites/${path}`, { id: req.params.id })
+     .then(tweet => res.send(tweet))
+     .catch(error => res.send(error));
 });
 
 app.post('/api/retweet/:id', (req, res) => {
   const path = req.body.state ? 'retweet' : 'unretweet';
   client
-    .post(`statuses/retweet/${req.params.id}`)
+    .post(`statuses/${path}/${req.params.id}`)
     .then(tweet => res.send(tweet))
     .catch(error => res.send(error));
 });
