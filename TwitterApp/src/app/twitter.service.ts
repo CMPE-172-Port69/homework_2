@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
-import { Tweet } from './tweet';
 
 export interface TwitterResponse {
   data: any;
@@ -28,10 +27,12 @@ export class TwitterService {
   return this.http.post<TwitterResponse>(`${environment.api}/${property}/${id}`, {state});
   }
 
+  updateStatus(status?: string){
+    return this.http.post<TwitterResponse>(`${environment.api}/statuses/update?status=${status}`);
+  }
+
   search(q?: string) {
   return this.http.get<TwitterResponse>(`${environment.api}/search?q=${q}`);
   }
 
-
   }
-

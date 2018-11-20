@@ -13,6 +13,8 @@ const client = new Twitter({
 });
 
 app.use(require('cors')());
+
+//this is needed to get POST parameters
 app.use(require('body-parser').json());
 
 
@@ -30,10 +32,10 @@ app.use(require('body-parser').json());
 //API call to search/tweets to pull relevant tweets based on queries performed
 //retrieves json object of 100 tweets relevant to the query: "banana"
 app.get('/api/search', (req, res) => {
-  console.log("/api/search");
+  console.log('/api/search');
 
 //localhost:3000/api/search?q={{searchQuery}}
-let searchQuery = req.query.q;
+const searchQuery = req.query.q;
 
   client
   .get('search/tweets', { q: searchQuery, count: 100 })
@@ -69,7 +71,7 @@ app.get('/api/home', (req, res) => {
   if (Date.now() - cacheAge > 60000) {
     console.log('60 seconds elapsed');
     cacheAge = Date.now();
-    const params = { tweet_mode: 'extended', count: 200 };
+    const params = { tweet_mode: 'extended', count: 5 };
     if (req.query.since) {
       params.since_id = req.query.since;
     }
@@ -87,22 +89,26 @@ app.get('/api/home', (req, res) => {
 
 app.post('/api/favorite/:id', (req, res) => {
   const path = req.body.state ? 'create' : 'destroy';
-  client
-    .post(`favorites/${path}`, { id: req.params.id })
-    .then(tweet => res.send(tweet))
-    .catch(error => res.send(error));
+   client
+     .post(`favorites/${path}`, { id: req.params.id })
+     .then(tweet => res.send(tweet))
+     .catch(error => res.send(error));
 });
 
 app.post('/api/retweet/:id', (req, res) => {
   const path = req.body.state ? 'retweet' : 'unretweet';
   client
-    .post(`statuses/retweet/${req.params.id}`)
+    .post(`statuses/${path}/${req.params.id}`)
     .then(tweet => res.send(tweet))
     .catch(error => res.send(error));
 });
 
-// app.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 }, function(err, data, response) {
-//   console.log(data)
-// })
+app.post('/api/statuses/update', (req, res) => {
+  const tweet = req.query.status;
+  client
+  .post('statuses/update', { status: tweet })
+  .then(tweeted => res.send(tweeted))
+  .catch(error => res.send(error));
+});
 
 app.listen(3000, () => console.log('Server running'));
