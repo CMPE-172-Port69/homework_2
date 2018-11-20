@@ -28,7 +28,7 @@ export class TimelineComponent implements OnInit {
 
       console.log(this.listOfTweets);
     });
-    this.since = this.listOfTweets[0].id_str;
+    //this.since = this.listOfTweets[0].id;
   }
 
   favoriteTweet(input) {

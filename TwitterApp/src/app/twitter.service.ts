@@ -28,7 +28,7 @@ export class TwitterService {
   }
 
   updateStatus(status?: string){
-    return this.http.post<TwitterResponse>(`${environment.api}/statuses/update?status=${status}`);
+    return this.http.post<TwitterResponse>(`${environment.api}/statuses/update?status=${status}`, {status});
   }
 
   search(q?: string) {
