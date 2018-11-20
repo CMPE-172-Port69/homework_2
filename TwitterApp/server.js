@@ -15,6 +15,18 @@ const client = new Twitter({
 app.use(require('cors')());
 app.use(require('body-parser').json());
 
+
+// app.post('/api/tweet', (req, res) => {
+//   client
+//   .post('statuses/update', { status: tweetText }
+//   .then(tweet => {}) function (err, data, response) {
+//   console.log(data)
+// })
+
+// T.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 }, function(err, data, response) {
+//   console.log(data)
+// })
+
 //API call to search/tweets to pull relevant tweets based on queries performed
 //retrieves json object of 100 tweets relevant to the query: "banana"
 app.get('/api/search', (req, res) => {
