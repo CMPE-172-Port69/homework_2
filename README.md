@@ -31,7 +31,7 @@ docker-compose up
 ```
 After running the docker-compose command, you can now access the application on http://localhost:4200
 
-# homework_2
+# TwitterApp
 Web app using Docker and Twitter API
 Built with Angular 6 Framework, Nodejs, Express, and twit
 
