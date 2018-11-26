@@ -1,9 +1,3 @@
-#
-# BudgetTracker Dockerfile for UI
-#
-FROM ubuntu:latest
-MAINTAINER Arunkumar Srisailapathi "sail.arunkumar@gmail.com"
-
 USER root
 
 RUN apt-get update
