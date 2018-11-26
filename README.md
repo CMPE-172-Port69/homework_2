@@ -1,35 +1,35 @@
-# docker_hw2
-Everything in homework_2 shipped and containerized into 2 docker containers; 1 for front-end, 1 for back-end
+# Docker
+Everything in TwitterApp shipped and containerized into 2 docker containers (Docker/express-server, Docker/twitter-client); 1 for front-end, 1 for back-end
 
-## Setup 
+## FOR TESTING: To run the two containers seperately
 ### In the twitter-client directory:
-```
+```bash
 docker build -t client .
-docker run -p 4200:4200 client (OPTIONAL, use this to test front-end)
+docker run -p 4200:4200 client
 ```
 ### In the express-server directory:
-```
+```bash
 docker build -t server .
-docker run -p 3000:3000 server (OPTIONAL, use this to test back-end)
+docker run -p 3000:3000 server
 ```
-
 After building images for both client & server and running them, you can now access the application on http://localhost:4200
 
-## To run the full-stack application in one command
+## PREFERRED: To run the full-stack application in one command
 Make sure all containers are killed before running or else ports will conflict
 To check running containers:
-```
+```bash
 docker ps
 ```
-To kill a container:
-```
+If there are any listings, to kill a container:
+```bash
 docker kill <CONTAINER ID>
 ```
-### In the docker_hw2 directory:
-```
+### Run the docker-compose.yml file in the Docker directory:
+This builds and starts all the containers
+```bash
 docker-compose up
 ```
-After running the docker-compose command, you can now access the application on http://localhost:4200
+You can now access the application on http://localhost:4200
 
 # TwitterApp
 Web app using Docker and Twitter API
