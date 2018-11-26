@@ -31,6 +31,9 @@ docker-compose up
 ```
 You can now access the application on http://localhost:4200
 
+#### References
+https://www.linkedin.com/pulse/serve-static-files-from-docker-via-nginx-basic-example-arun-kumar/
+
 # TwitterApp
 Web app using Docker and Twitter API
 Built with Angular 6 Framework, Nodejs, Express, and twit
