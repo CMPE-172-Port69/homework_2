@@ -92,7 +92,7 @@ describe('TwitterService', () => {
     let status = "Happy Thanksgiving";
 
     service.updateStatus(status).subscribe(result => {
-      expect(result.data).toBeTruthy();\
+      expect(result.data).toBeTruthy();
       // Tests that an object was returned by the API endpoint
     });
 
