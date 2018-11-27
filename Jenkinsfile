@@ -4,7 +4,7 @@ pipeline {
     stage('Setup') {
       steps {
         sh '''cd TwitterApp; 
-
+echo "Setting up environment...";  
 
 
 
@@ -18,22 +18,22 @@ npm install;'''
     }
     stage('Test') {
       steps {
-        sh 'echo "Testing...";pwd ; ng test'
+        sh 'cd TwitterApp; echo "Testing..."; ng test'
       }
     }
     stage('Build') {
       steps {
-        sh 'echo "Building..."; ng build;'
+        sh 'cd TwitterApp; echo "Building..."; ng build;'
       }
     }
     stage('Deploy') {
       steps {
-        sh 'echo "Deploying..."'
+        sh 'cd TwitterApp; echo "Deploying..."'
       }
     }
     stage('Cleanup') {
       steps {
-        sh 'rm -r node_modules'
+        sh 'cd TwitterApp; echo "Cleaning up..."; rm -r node_modules'
       }
     }
   }
