@@ -18,7 +18,7 @@ npm install;'''
     }
     stage('Test') {
       steps {
-        sh 'echo "Testing..."; ng test'
+        sh 'echo "Testing...";pwd ; ng test'
       }
     }
     stage('Build') {
