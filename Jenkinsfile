@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Setup') {
       steps {
-        sh '''cd TwitterApp; 
+        sh '''whoami; cd TwitterApp; 
 echo "Setting up environment...";    sudo apt  install nodejs npm;
 
 
