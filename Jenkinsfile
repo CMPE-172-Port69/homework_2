@@ -35,7 +35,7 @@ ng test;'''
 echo "Deploying..."; 
 /bin/mv TwitterApp/dist Docker/twitter-client/dist; 
 cd Docker; 
-docker-machine start default;
+docker-machine start;
 docker-compose up;'''
       }
     }
