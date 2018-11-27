@@ -19,7 +19,8 @@ npm install;'''
     }
     stage('Test') {
       steps {
-        sh 'cd TwitterApp; echo "Testing..."; ng test'
+        sh '''PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin
+ ; cd TwitterApp; echo "Testing..."; ng test'''
       }
     }
     stage('Build') {
