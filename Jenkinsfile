@@ -35,8 +35,7 @@ ng test;'''
 echo "Deploying..."; 
 /bin/mv TwitterApp/dist Docker/twitter-client/dist; 
 cd Docker; 
-eval $(docker-machine env the-vm-name);
-docker-machine ls;
+docker-start;
 docker-compose up;'''
       }
     }
