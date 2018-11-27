@@ -18,7 +18,11 @@ npm install;'''
     }
     stage('Test') {
       steps {
-        sh 'export PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin; cd TwitterApp; echo "Testing..."; ng test'
+        sh '''export PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin; 
+npm install -g @angular/cli;
+ng --version;
+cd TwitterApp; echo "Testing..."; 
+ng test;'''
       }
     }
     stage('Build') {
