@@ -3,8 +3,7 @@ pipeline {
   stages {
     stage('Setup') {
       steps {
-        sh '''export PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin;
-cd TwitterApp; 
+        sh '''cd TwitterApp; 
 echo "Setting up environment...";  
 
 
@@ -19,8 +18,7 @@ npm install;'''
     }
     stage('Test') {
       steps {
-        sh '''PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin
- ; cd TwitterApp; echo "Testing..."; ng test'''
+        sh 'cd TwitterApp; echo "Testing..."; ng test'
       }
     }
     stage('Build') {
@@ -30,7 +28,7 @@ npm install;'''
     }
     stage('Deploy') {
       steps {
-        sh 'cd TwitterApp; echo "Deploying..."'
+        sh ' echo "Deploying..."; mv TwitterApp/dist Docker/twitter-client/dist; cd Docker; docker-compose up;'
       }
     }
     stage('Cleanup') {
