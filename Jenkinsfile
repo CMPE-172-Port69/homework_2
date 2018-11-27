@@ -3,7 +3,8 @@ pipeline {
   stages {
     stage('Setup') {
       steps {
-        sh '''cd TwitterApp; 
+        sh '''export PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin;
+cd TwitterApp; 
 echo "Setting up environment...";  
 
 
