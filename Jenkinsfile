@@ -1,9 +1,24 @@
 pipeline {
   agent any
   stages {
+    stage('Setup') {
+      steps {
+        sh '''cd TwitterApp; 
+
+
+
+
+
+
+
+
+
+npm install;'''
+      }
+    }
     stage('Test') {
       steps {
-        sh 'cd TwitterApp; echo "Testing..."; ng test'
+        sh 'echo "Testing..."; ng test'
       }
     }
     stage('Build') {
@@ -11,9 +26,14 @@ pipeline {
         sh 'echo "Building..."; ng build;'
       }
     }
-    stage('error') {
+    stage('Deploy') {
       steps {
         sh 'echo "Deploying..."'
+      }
+    }
+    stage('Cleanup') {
+      steps {
+        sh 'rm -r node_modules'
       }
     }
   }
