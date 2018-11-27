@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('Setup') {
       steps {
-        sh '''export PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin; cd TwitterApp; 
-echo "Setting up environment...";  
+        sh '''cd TwitterApp; 
+echo "Setting up environment...";    sudo apt  install nodejs npm;
 
 
 
@@ -18,25 +18,23 @@ npm install;'''
     }
     stage('Test') {
       steps {
-        sh '''export PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin; 
-ng --version;
+        sh '''ng --version;
 cd TwitterApp; echo "Testing..."; 
 ng test;'''
       }
     }
     stage('Build') {
       steps {
-        sh 'export PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin; cd TwitterApp; echo "Building..."; ng build;'
+        sh 'cd TwitterApp; echo "Building..."; ng build;'
       }
     }
     stage('Deploy') {
       steps {
-        sh ''' export PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin; 
-echo "Deploying..."; 
+        sh ''' echo "Deploying..."; 
 /bin/mv TwitterApp/dist Docker/twitter-client/dist; 
 cd Docker;
 docker-machine create --driver virtualbox default;
-eval "docker-machine env default";  
+eval "docker-machine env default"; Â 
 docker-compose up;'''
       }
     }
