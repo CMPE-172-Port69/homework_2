@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Test') {
       steps {
-        sh 'echo "Testing..."; ng test'
+        sh 'cd TwitterApp; echo "Testing..."; ng test'
       }
     }
     stage('Build') {
@@ -11,7 +11,7 @@ pipeline {
         sh 'echo "Building..."; ng build;'
       }
     }
-    stage('') {
+    stage('error') {
       steps {
         sh 'echo "Deploying..."'
       }
