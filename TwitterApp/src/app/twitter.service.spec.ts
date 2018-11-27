@@ -2,7 +2,6 @@ import { TestBed, inject, getTestBed } from '@angular/core/testing';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing'
 
 import { TwitterService } from './twitter.service';
-import { Tweet } from './tweet';
 import { environment } from '../environments/environment';
 
 describe('TwitterService', () => {
@@ -26,11 +25,11 @@ describe('TwitterService', () => {
   });
 
   it('Test user API Endpoint', () => {
-    let id = Math.floor((Math.random() * 100 + 1));
+    let userId = Math.floor((Math.random() * 100 + 1));
 
     service.user()
     .subscribe(response => {
-      expect(response.data.id).toEqual(id);
+      expect(response.data.id).toEqual(userId);
       // Checks that the correct user id was sent by the backend
     });
 
@@ -38,7 +37,7 @@ describe('TwitterService', () => {
 
     req.flush({
       data: {
-        id: id,
+        id: userId,
         name: "Twitter User"}
     });
   });
@@ -92,15 +91,15 @@ describe('TwitterService', () => {
     let status = "Happy Thanksgiving";
 
     service.updateStatus(status).subscribe(result => {
-      expect(result.data).toBeTruthy();\
+      expect(result.data).toBeTruthy();
       // Tests that an object was returned by the API endpoint
     });
 
     const req = httpMock.expectOne(`${environment.api}/statuses/update?status=${status}`);
 
-    req.flush({
+    req.flush({ 
       data: {}
-    });
+    })
   });
 
   it("Test search API Endpoint", () => {
