@@ -34,7 +34,9 @@ ng test;'''
         sh ''' export PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin; 
 echo "Deploying..."; 
 /bin/mv TwitterApp/dist Docker/twitter-client/dist; 
-cd Docker; 
+cd Docker;
+docker-machine create --driver virtualbox default;
+eval "docker-machine env default";  
 docker-compose up;'''
       }
     }
