@@ -4,7 +4,7 @@ pipeline {
     stage('Setup') {
       steps {
         sh '''whoami; cd TwitterApp; 
-echo "Setting up environment...";    sudo apt  install nodejs npm;
+echo "Setting up environment...";    yes | sudo apt  install nodejs npm;
 
 
 
@@ -34,7 +34,7 @@ ng test;'''
 /bin/mv TwitterApp/dist Docker/twitter-client/dist; 
 cd Docker;
 docker-machine create --driver virtualbox default;
-eval "docker-machine env default"; Â 
+eval "docker-machine env default"; 
 docker-compose up;'''
       }
     }
