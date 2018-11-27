@@ -33,7 +33,10 @@ ng test;'''
       steps {
         sh ''' export PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin; 
 echo "Deploying..."; 
-/bin/mv TwitterApp/dist Docker/twitter-client/dist; cd Docker; docker-compose up;'''
+/bin/mv TwitterApp/dist Docker/twitter-client/dist; 
+cd Docker; 
+docker-machine start default;
+docker-compose up;'''
       }
     }
     stage('Cleanup') {
