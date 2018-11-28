@@ -20,8 +20,24 @@ const con = mysql.createConnection({
 });
 
 con.connect(err => {
-	if(err) throw err;
-	console.log("Connected!");
+  if(err) throw err;
+  console.log("Connected!");
+  
+  // Setting up the database
+  con.query("use employees", (err, result) => {
+    if (err) throw err;
+  });
+
+  /// Test query
+  con.query("select * from titles where emp_no = 18052", (err, result) => {
+    if (err) throw err;
+    
+    var arrayLength = result.length;
+    for (var i = 0;i < arrayLength; i++) {
+      console.log("Result: " + result[0].title);
+    }
+  });
+
 });
 
 app.use(require('cors')());
