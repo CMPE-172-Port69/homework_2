@@ -1,6 +1,7 @@
 const express = require('express');
 const Twitter = require('twit');
 const dotenv = require('dotenv');
+const mysql = require('mysql');
 
 dotenv.config();
 
@@ -10,6 +11,17 @@ const client = new Twitter({
   consumer_secret: process.env.CONSUMER_SECRET,
   access_token: process.env.ACCESS_TOKEN,
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
+});
+
+const con = mysql.createConnection({
+  host: "localhost",
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASS
+});
+
+con.connect(err => {
+	if(err) throw err;
+	console.log("Connected!");
 });
 
 app.use(require('cors')());
