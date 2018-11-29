@@ -28,16 +28,6 @@ con.connect(err => {
     if (err) throw err;
   });
 
-  /// Test query
-  con.query("select * from titles where emp_no = 18052", (err, result) => {
-    if (err) throw err;
-    
-    var arrayLength = result.length;
-    for (var i = 0;i < arrayLength; i++) {
-      console.log("Result: " + result[0].title);
-    }
-  });
-
 });
 
 app.use(require('cors')());
@@ -45,17 +35,19 @@ app.use(require('cors')());
 //this is needed to get POST parameters
 app.use(require('body-parser').json());
 
+// ********************* //
+//    Database APIs     //
+// ********************* //
 
-// app.post('/api/tweet', (req, res) => {
-//   client
-//   .post('statuses/update', { status: tweetText }
-//   .then(tweet => {}) function (err, data, response) {
-//   console.log(data)
-// })
+app.get('/api/salary/:id', (req, res) => {
+    /// Test query
+    con.query("select * from salaries where emp_no = " + req.params.id, (err, result) => {
+      if (err) throw err;
+      
+      res.send(result);
+    });
+});
 
-// T.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 }, function(err, data, response) {
-//   console.log(data)
-// })
 
 //API call to search/tweets to pull relevant tweets based on queries performed
 //retrieves json object of 100 tweets relevant to the query: "banana"
