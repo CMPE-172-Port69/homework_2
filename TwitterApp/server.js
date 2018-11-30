@@ -14,7 +14,7 @@ const client = new Twitter({
 });
 
 const con = mysql.createConnection({
-  host: "localhost",
+  host: process.env.HOST,
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASS
 });
@@ -39,14 +39,28 @@ app.use(require('body-parser').json());
 //    Database APIs     //
 // ********************* //
 
-app.get('/api/salary/:id', (req, res) => {
-    /// Test query
-    con.query("select * from salaries where emp_no = " + req.params.id, (err, result) => {
-      if (err) throw err;
-      
-      res.send(result);
-    });
+app.get('/api/salary', (req, res) => {
+  let query = "select * from salaries where emp_no = " + req.query.id; 
+  con.query(query, (err, result) => {
+    if (err) throw err;
+    
+    res.send(result);
+    console.log("/api/salary/" + req.params.id);
+  });
 });
+
+app.get('/api/employee/:id', (req, res) => {
+  let query = "select * from employees where emp_no = " + req.params.id;  
+  con.query(query, (err, result) => {
+    if (err) throw err;
+
+    res.send(result);
+  })
+});
+
+
+
+
 
 
 //API call to search/tweets to pull relevant tweets based on queries performed
