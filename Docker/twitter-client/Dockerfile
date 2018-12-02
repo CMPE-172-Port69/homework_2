@@ -3,7 +3,6 @@ FROM nginx
 USER root
 
 RUN apt-get update
-RUN apt-get install nodejs
 
 # Remove the default Nginx configuration file
 RUN rm -v /etc/nginx/nginx.conf
