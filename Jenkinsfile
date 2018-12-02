@@ -25,7 +25,7 @@ export CHROME_BIN=/usr/bin/chromium-browser; ng test;'''
     }
     stage('Build') {
       steps {
-        sh 'cd TwitterApp; echo "Building..."; ng build; mv dist ../Docker/twitter-client/dist/;'
+        sh 'cd TwitterApp; echo "Building..."; ng build; mv dist ../Docker/twitter-client;'
       }
     }
     stage('Deploy') {
