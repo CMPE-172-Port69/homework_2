@@ -1,3 +1,5 @@
+FROM scratch
+
 USER root
 
 RUN apt-get update
