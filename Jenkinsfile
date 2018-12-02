@@ -30,7 +30,7 @@ export CHROME_BIN=/usr/bin/chromium-browser; ng test;'''
     }
     stage('Deploy') {
       steps {
-        sh 'echo "Deploying..."; cd Docker; export DOCKER_HOST="tcp://localhost:2376"; docker-compose up;'
+        sh 'echo "Deploying..."; cd Docker; sudo docker-compose up;'
       }
     }
     stage('Cleanup') {
