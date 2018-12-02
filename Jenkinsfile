@@ -3,8 +3,8 @@ pipeline {
   stages {
     stage('Setup') {
       steps {
-        sh '''whoami; cd TwitterApp; 
-echo "Setting up environment..."; 
+        sh '''whoami; 
+rm -r Docker/twitter-client/dist/*; echo "Setting up environment..."; cd TwitterApp;
 
 
 
@@ -25,7 +25,7 @@ export CHROME_BIN=/usr/bin/chromium-browser; ng test;'''
     }
     stage('Build') {
       steps {
-        sh 'cd TwitterApp; echo "Building..."; ng build;'
+        sh 'cd TwitterApp; echo "Building..."; ng build; mv dist/* ../Docker/twitter-client/dist/;'
       }
     }
     stage('Deploy') {
@@ -35,7 +35,7 @@ export CHROME_BIN=/usr/bin/chromium-browser; ng test;'''
     }
     stage('Cleanup') {
       steps {
-        sh 'cd TwitterApp; echo "Cleaning up..."; rm -r node_modules'
+        sh 'echo "Cleaning up..."; rm -r TwitterApp/node_modules; rm -r Docker/twitter-client/dist/*'
       }
     }
   }
