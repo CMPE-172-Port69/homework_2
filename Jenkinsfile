@@ -28,6 +28,11 @@ export CHROME_BIN=/usr/bin/chromium-browser; ng test;'''
         sh 'cd TwitterApp; echo "Building..."; ng build;'
       }
     }
+    stage('Deploy') {
+      steps {
+        sh 'cd TwitterApp; echo "Deploying..."; cp dist/* /usr/share/nginx/html/; '
+      }
+    }
     stage('Cleanup') {
       steps {
         sh 'cd TwitterApp; echo "Cleaning up..."; rm -r node_modules'
