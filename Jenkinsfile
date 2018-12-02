@@ -4,7 +4,7 @@ pipeline {
     stage('Setup') {
       steps {
         sh '''whoami; 
-rm -r Docker/twitter-client/dist/*; echo "Setting up environment..."; cd TwitterApp;
+ echo "Setting up environment..."; cd TwitterApp;
 
 
 
