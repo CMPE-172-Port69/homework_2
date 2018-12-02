@@ -4,7 +4,7 @@ pipeline {
     stage('Setup') {
       steps {
         sh '''whoami; 
-rm -r Docker/twitter-client/dist/*; echo "Setting up environment..."; cd TwitterApp;
+ echo "Setting up environment..."; cd TwitterApp;
 
 
 
@@ -30,7 +30,7 @@ export CHROME_BIN=/usr/bin/chromium-browser; ng test;'''
     }
     stage('Deploy') {
       steps {
-        sh 'echo "Deploying..."; cd Docker; sudo docker-compose up;'
+        sh 'echo "Deploying..."; cd Docker; ls Docker/twitter-client/dist; sudo docker-compose up;'
       }
     }
     stage('Cleanup') {
