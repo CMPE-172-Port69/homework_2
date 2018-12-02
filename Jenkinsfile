@@ -20,7 +20,7 @@ npm install;'''
       steps {
         sh '''ng --version;
 cd TwitterApp; echo "Testing..."; 
-ng test;'''
+export CHROME_BIN=/usr/bin/chromium-browser; ng test;'''
       }
     }
     stage('Build') {
