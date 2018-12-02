@@ -30,7 +30,7 @@ export CHROME_BIN=/usr/bin/chromium-browser; ng test;'''
     }
     stage('Deploy') {
       steps {
-        sh 'echo "Deploying..."; cd Docker; ls Docker/twitter-client/dist; sudo docker-compose up;'
+        sh 'echo "Deploying..."; cd Docker; nohup sudo docker-compose up &;'
       }
     }
     stage('Cleanup') {
