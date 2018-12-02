@@ -12,7 +12,7 @@ RUN rm -v /etc/nginx/nginx.conf
 ADD nginx.conf /etc/nginx/
 
 ADD dist/* /usr/share/nginx/html/
-ADD dist/* /var/www/html/
+# ADD dist/* /var/www/html/
 
 # Append "daemon off;" to the beginning of the configuration
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
