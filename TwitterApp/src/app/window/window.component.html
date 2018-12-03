@@ -1,34 +1,18 @@
-
-
-
   <div *ngIf="user">
     <!-- User Profile Box -->
-  <div class = "window">
-    <h1>Profile Details</h1>
-    <b>User:</b>@{{user.screen_name}}
-    <br>
-    <b>Name:</b> {{user.name}}
-    <br>
-    <b>Location:</b> {{ user.location }}
-    <br>
-    <b>Description: </b> {{user.description}}
-    <br>
-  </div>
 
-  <div class ="window">
-      <h1>Update Status</h1>
+    <app-profile [user] = "user"></app-profile>
+
+
+
       <app-update-status></app-update-status>
-    </div>
 
-    <div class ="window">
-        <h1>Timeline (5 most recent tweets)</h1>
+
         <app-timeline></app-timeline>
-      </div>
 
-  <!-- Search Box -->
-  <div class = "window">
-    <h1>Search</h1>
+
+
      <app-search>
      </app-search>
-  </div>
+
 </div>

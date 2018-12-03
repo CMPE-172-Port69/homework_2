@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TwitterService } from './twitter.service';
 import { Tweet } from './tweet';
+import { OktaAuthService } from '@okta/okta-angular';
+import { Router } from "@angular/router";
+
 
 @Component({
   selector: 'app-root',
@@ -14,34 +17,28 @@ export class AppComponent implements OnInit {
 
   title = 'TwitterApp';
   user;
-  // t: Tweet = {
-  //  id: 1234;
-  //   text: 'bllblals';
-  // };
   tweets: Tweet[] = [];
   bananaTweet;
   string: string;
   text: string[] = [];
+  isAuthenticated: boolean;
 
-  constructor(private twitter: TwitterService) {}
+  constructor(private twitter: TwitterService, private router: Router, public oktaAuth: OktaAuthService) {
+    this.oktaAuth.$authenticationState.subscribe(isAuthenticated => this.isAuthenticated = isAuthenticated)
+  }
 
 
-  ngOnInit() {
+  async ngOnInit() {
   // calls user API and puts the response in user object
   this.twitter.user().subscribe(x => this.user = x.data);
 
-  // // calls the search API and puts the response into text array string[]
-  // this.twitter.search('banana').subscribe(x => {
-  //   //prints out the json onto the console
-  //   console.log(x.data.statuses.map(e=> e.text));
+  this.isAuthenticated = await this.oktaAuth.isAuthenticated();
 
-  //   //puts x.data into bananaTweet object
-  //   this.bananaTweet = x.data;
-  //   this.text = this.bananaTweet.statuses.map(e=> e.text);
-  // });
-
-
-
-
+  }
+  login() {
+    this.oktaAuth.loginRedirect();
+  }
+  logout() {
+    this.oktaAuth.logout('/');
   }
 }

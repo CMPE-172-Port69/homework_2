@@ -1,14 +1,21 @@
-<label>Post a new Tweet: </label>
+<table class="ui table">
+  <thead>
+    <tr>
+      <th>Update Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><label>Post a new Tweet: </label>
 <input type="text"
 class="form-control"
 [(ngModel)]="input"
 (input) = "checkString(input)">
-
-<p>
-    {{ input }}
-</p>
-
 <button class="btn"
 [disabled]="stringIsEmpty"
 (click)="updateStatus()">OK
 </button>
+</td>
+    </tr>
+  </tbody>
+</table>

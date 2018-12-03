@@ -1,31 +1,38 @@
-<label>Search for top 100 Tweets: </label>
-<input type="text"
+
+
+
+<table class="ui table">
+  <thead>
+    <tr>
+      <th>Search for top 100 Tweets: </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+  	<tr>
+  		<td>
+  			<input type="text"
 class="form-control"
 [(ngModel)]="input"
 (input) = "checkString(input)">
-
-<p>
-    {{ input }}
-</p>
-
 <button class="btn"
 [disabled]="stringIsEmpty"
 (click)="onSearch()">OK
 </button>
-
+<br>
 <p [innerText] = statusMessage>
     <!-- above line is DATA BINDING, below line is STRING INTERPOLATION -->
     {{ statusMessage }}
 </p>
-
-
-<div class="tweet" *ngFor="let entryTweet of listOfTweets">
-{{entryTweet}}
-<br>
-</div>
-
-<!-- <ul>
-  <li *ngFor="let entryTweet of listOfTweets">
-      {{ entryTweet }}
-  </li>
-</ul> -->
+  		</td>
+  	</tr>
+    <tr *ngFor="let entryTweet of listOfTweets">
+      <td>{{entryTweet}}
+      	<br>
+      <img class="button" src="../../assets/heart.png" (click)="favoriteTweet(tweetEntry)">
+  <img class="button" src="../../assets/retweet.png" (click)="retweetTweet(tweetEntry)">
+  
+</td>
+    </tr>
+  </tbody>
+</table>
