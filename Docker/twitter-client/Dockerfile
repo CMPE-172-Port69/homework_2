@@ -17,7 +17,7 @@ ADD dist/* /usr/share/nginx/html/
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 # Expose ports
-EXPOSE 4200
+EXPOSE 1234
 
 # Set the default command to execute
 # when creating a new container
