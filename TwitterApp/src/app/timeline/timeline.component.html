@@ -1,6 +1,20 @@
-<div class="tweet" *ngFor="let tweetEntry of listOfTweets">
-  {{tweetEntry.text}}
-  <br>
-  <img class="button" src="../../assets/heart.png" (click)="favoriteTweet(tweetEntry)">
+<app-update-status></app-update-status>
+
+
+<table class="ui table">
+  <thead>
+    <tr>
+      <th>Timeline</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tweetEntry of listOfTweets">
+      <td>{{tweetEntry.text}}
+      	<br>
+      <img class="button" src="../../assets/heart.png" (click)="favoriteTweet(tweetEntry)">
   <img class="button" src="../../assets/retweet.png" (click)="retweetTweet(tweetEntry)">
-</div>
+</td>
+    </tr>
+  </tbody>
+</table>

@@ -10,6 +10,40 @@ import { SearchComponent } from './search/search.component';
 import { LocationComponent } from './location/location.component';
 import { TimelineComponent } from './timeline/timeline.component';
 import { UpdateStatusComponent } from './update-status/update-status.component';
+import {
+  OktaAuthGuard,
+  OktaAuthModule,
+  OktaCallbackComponent,
+} from '@okta/okta-angular';
+import config from './.samples.config';
+import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
+
+const appRoutes: Routes = [
+{
+  path: '',
+  component: HomeComponent
+},
+{
+  path: 'timeline',
+  component: TimelineComponent,
+  canActivate: [ OktaAuthGuard ],
+},
+{
+  path: 'search',
+  component: SearchComponent,
+  canActivate: [ OktaAuthGuard ],
+},
+{
+  path: 'profile',
+  component: ProfileComponent,
+  canActivate: [ OktaAuthGuard ],
+},
+{
+  path: 'implicit/callback',
+  component: OktaCallbackComponent
+}];
 
 @NgModule({
   declarations: [
@@ -18,12 +52,16 @@ import { UpdateStatusComponent } from './update-status/update-status.component';
     SearchComponent,
     LocationComponent,
     TimelineComponent,
-    UpdateStatusComponent
+    UpdateStatusComponent,
+    HomeComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    OktaAuthModule.initAuth(config.oidc),
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

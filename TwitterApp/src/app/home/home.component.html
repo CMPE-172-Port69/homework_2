@@ -1,0 +1,28 @@
+<h1 class="ui header">PORT69: TwitterApp</h1>
+<div *ngIf="!isAuthenticated">
+  <p>This application was created for CMPE172: Homework #2. It was built using Angular and uses Node/Express to connect to the Twitter API.</p>
+  <p>Please login to have access to this app:
+ </p>
+  <button id="login-button" class="ui primary button" role="button" (click)="login()">Login</button>
+</div>
+
+<div *ngIf="isAuthenticated && userName">
+  <p>Welcome back, {{ userName }}!</p>
+
+  <p>This is an application created for Homework Assignment #2 for CMPE172: Entererprise Platform Software. It was built with Angular and uses node/express to connect to the Twitter API.</p>
+
+  <p>The credentials for the user are currently hardcoded for the convenience of testing & development.</p>
+
+  Applications:
+  <br>
+  <a href="http://localhost:4200">PORT69 Portal</a>
+  <br>
+  <a href="https://dev-838726.oktapreview.com/home/twitter/0oahzouzgwVMK1fzs0h7/150?fromHome=true">Official Twitter</a>
+  <br>
+  <br>
+
+  <app-window
+[user] = "user">
+</app-window>
+
+</div>

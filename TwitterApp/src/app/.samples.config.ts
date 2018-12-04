@@ -9,3 +9,4 @@ export default {
         messagesUrl: 'http://localhost:8000/api/messages',
     },
 };
+
