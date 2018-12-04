@@ -6,3 +6,4 @@ export default {
     scope: 'openid profile email',
   }
 };
+
