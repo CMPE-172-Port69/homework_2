@@ -1,6 +1,7 @@
 const express = require('express');
 const Twitter = require('twit');
 const dotenv = require('dotenv');
+const mysql = require('mysql');
 
 dotenv.config();
 
@@ -12,22 +13,16 @@ const client = new Twitter({
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
 
+
 app.use(require('cors')());
 
 //this is needed to get POST parameters
 app.use(require('body-parser').json());
 
 
-// app.post('/api/tweet', (req, res) => {
-//   client
-//   .post('statuses/update', { status: tweetText }
-//   .then(tweet => {}) function (err, data, response) {
-//   console.log(data)
-// })
 
-// T.get('search/tweets', { q: 'banana since:2011-07-11', count: 100 }, function(err, data, response) {
-//   console.log(data)
-// })
+
+
 
 //API call to search/tweets to pull relevant tweets based on queries performed
 //retrieves json object of 100 tweets relevant to the query: "banana"
