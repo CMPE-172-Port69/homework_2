@@ -27,14 +27,19 @@ const appRoutes: Routes = [
 },
 {
   path: 'timeline',
-  component: TimelineComponent
-  
+  component: TimelineComponent,
+  canActivate: [ OktaAuthGuard ],
 },
-  {
-    path: 'profile',
-    component: ProfileComponent
-  
-  },
+{
+  path: 'search',
+  component: SearchComponent,
+  canActivate: [ OktaAuthGuard ],
+},
+{
+  path: 'profile',
+  component: ProfileComponent,
+  canActivate: [ OktaAuthGuard ],
+},
 {
   path: 'implicit/callback',
   component: OktaCallbackComponent
