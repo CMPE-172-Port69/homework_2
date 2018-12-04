@@ -24,7 +24,7 @@ class="form-control"
   		</td>
   	</tr>
     <tr *ngFor="let tweetEntry of listOfTweets">
-      <td>@{{ tweetEntry.screen_name }} : {{tweetEntry.text}} 
+      <td>{{tweetEntry.text}} 
         <!-- this needs to be an object accessed here with tweetEntry.text -->
       	<br>
       <img class="button" src="../../assets/heart.png" (click)="favoriteTweet(tweetEntry)">

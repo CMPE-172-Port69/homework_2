@@ -9,12 +9,13 @@ import { TwitterService } from '../twitter.service';
 })
 export class ProfileComponent implements OnInit {
 
-  @Input() user: any;
-
+  user;
+  
   constructor(private twitter: TwitterService) { }
 
   ngOnInit() {
   	this.twitter.user().subscribe(x => this.user = x.data);
+  	
   }
 
 }

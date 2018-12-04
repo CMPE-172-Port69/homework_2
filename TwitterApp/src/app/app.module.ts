@@ -15,10 +15,11 @@ import {
   OktaAuthModule,
   OktaCallbackComponent,
 } from '@okta/okta-angular';
-import config from './.samples.config';
+ 
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
+import config from './.samples.config';
 
 const appRoutes: Routes = [
 {
