@@ -35,7 +35,7 @@ pipeline {
           echo "Deploying..."; 
           cd Docker; 
           sudo docker-compose build; 
-          nohup sudo docker-compose up &'''
+          nohup sudo docker-compose up &;'''
       }
     }
     stage('Cleanup') {
@@ -43,7 +43,7 @@ pipeline {
         sh '''
           echo "Cleaning up..."; 
           rm -r TwitterApp/node_modules; 
-          rm -r Docker/twitter-client/dist/*'''
+          rm -r Docker/twitter-client/dist/*;'''
       }
     }
   }
